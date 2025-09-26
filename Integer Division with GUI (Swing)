@@ -1,0 +1,51 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Q10 extends JFrame implements ActionListener {
+    JTextField num1, num2, result;
+    JButton divide;
+
+    Q10() {
+        setLayout(null);
+
+        num1 = new JTextField();
+        num1.setBounds(50, 50, 100, 30);
+        add(num1);
+
+        num2 = new JTextField();
+        num2.setBounds(200, 50, 100, 30);
+        add(num2);
+
+        result = new JTextField();
+        result.setBounds(125, 100, 100, 30);
+        result.setEditable(false);
+        add(result);
+
+        divide = new JButton("Divide");
+        divide.setBounds(125, 150, 100, 30);
+        divide.addActionListener(this);
+        add(divide);
+
+        setSize(400, 300);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            int n1 = Integer.parseInt(num1.getText());
+            int n2 = Integer.parseInt(num2.getText());
+
+            int res = n1 / n2;
+            result.setText(String.valueOf(res));
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid Input: Enter integers only.");
+        } catch (ArithmeticException ex) {
+            JOptionPane.showMessageDialog(this, "Error: Division by zero.");
+        }
+    }
+
+    public static void main(String[] args) {
+        new Q10();
+    }
+}
