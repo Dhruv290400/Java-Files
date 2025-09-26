@@ -1,0 +1,57 @@
+import java.util.Random;
+
+class NumberGenerator extends Thread {
+    public static int num;
+    public void run() {
+        Random rand = new Random();
+        try {
+            while (true) {
+                num = rand.nextInt(10) + 1;
+                System.out.println("Generated Number: " + num);
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Square extends Thread {
+    public void run() {
+        try {
+            while (true) {
+                int n = NumberGenerator.num;
+                if (n % 2 == 0) {
+                    System.out.println("Square: " + (n * n));
+                }
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Cube extends Thread {
+    public void run() {
+        try {
+            while (true) {
+                int n = NumberGenerator.num;
+                if (n % 2 != 0) {
+                    System.out.println("Cube: " + (n * n * n));
+                }
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+public class Q11 {
+    public static void main(String[] args) {
+        new NumberGenerator().start();
+        new Square().start();
+        new Cube().start();
+    }
+}
