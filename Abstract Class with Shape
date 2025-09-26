@@ -1,0 +1,52 @@
+abstract class Shape {
+    int a, b;
+
+    Shape(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    abstract void printArea();
+}
+
+class Rectangle extends Shape {
+    Rectangle(int a, int b) {
+        super(a, b);
+    }
+
+    void printArea() {
+        System.out.println("Rectangle Area: " + (a * b));
+    }
+}
+
+class Triangle extends Shape {
+    Triangle(int a, int b) {
+        super(a, b);
+    }
+
+    void printArea() {
+        System.out.println("Triangle Area: " + (0.5 * a * b));
+    }
+}
+
+class Circle extends Shape {
+    Circle(int radius) {
+        super(radius, 0);
+    }
+
+    void printArea() {
+        System.out.println("Circle Area: " + (Math.PI * a * a));
+    }
+}
+
+public class Q9 {
+    public static void main(String[] args) {
+        Shape r = new Rectangle(10, 20);
+        Shape t = new Triangle(10, 15);
+        Shape c = new Circle(7);
+
+        r.printArea();
+        t.printArea();
+        c.printArea();
+    }
+}
