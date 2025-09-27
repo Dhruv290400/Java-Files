@@ -1,12 +1,12 @@
 public class ExceptionExample {
     public static void main(String[] args) {
         try {
-            // Code where exception may come
+            
             int num = 10 / 0; // This will cause ArithmeticException
             System.out.println("Result: " + num);
         } 
         catch (ArithmeticException e) {
-            // Handle exception
+            
             System.out.println("Error: Cannot divide by zero!");
         }
         
